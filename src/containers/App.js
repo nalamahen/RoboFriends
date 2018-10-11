@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setSearchField, requestRobots } from '../actions';
 
+import MainPage from '../components/MainPage'
+
 import './App.css';
-import MainPage from '../components/MainPage';
 
 const mapStateToProps = (state) => {
   return {
@@ -16,15 +17,13 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
-    onRequestRobots: () => requestRobots(dispatch)
+    onRequestRobots: () => dispatch(requestRobots())
   }
 }
 
 class App extends Component {
   render() {
-    return (
-      <MainPage {...this.props} />
-    )   
+    return <MainPage {...this.props}/>
   }
 }
 
